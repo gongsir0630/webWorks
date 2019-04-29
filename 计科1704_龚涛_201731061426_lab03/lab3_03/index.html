@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>龚涛-201731061426</title>
+		<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+	</head>
+	<body>
+		<div id="content">
+		</div>
+		<div id="luru">
+			stuNo:<input type="text"  id="stuNo" value="" />
+			stuName:<input type="text"  id="stuName" value="" />
+			stuGrade:<input type="text" id="stuGrade" value="" />
+			<button id="btn">录入</button>
+			
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				$('#btn').click(function(){
+					var stu = {
+						stuNo: $('#stuNo').val(),
+						stuName: $('#stuName').val(),
+						stuGrade: $('#stuGrade').val()
+					};
+					$.post('http://localhost:7277/Stu/InsertStus', { data: JSON.stringify(stu) }, function (rsp){
+						console.log(rsp);
+					});
+				});
+				$.get('http://localhost:7277/Stu/getStuList', function (rsp){
+					
+					$.each(rsp,function(n, value){
+						var html = '';
+						html = 'stuNo: ' + value.stuNo + ', stuName: ' + value.stuName + ', stuGrade: ' + value.stuGrade + '<br/>';
+						$('#content').append(html);
+					})
+				},'json');
+			});
+		</script>
+	</body>
+</html>
