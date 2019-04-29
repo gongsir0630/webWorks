@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>201731061426_龚涛</title>
+		<script src="../static/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/mycss.css"/>
+		<script src="js/check_login.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="container main">
+			<form role = "form">
+				<table class="table" align="center">
+					<caption class="text-center" style="font-size: 30px; color: #0000FF;">登陆</caption>
+					<tbody>
+						<!-- 邮件地址 -->
+						<tr>
+							<td class="text-right col-sm-4" style="vertical-align: middle;">
+								<span class="_flag">*</span>
+								<span class="">邮件地址</span>
+							</td>
+							<td class="form-group">
+								<span class="col-sm-4" style="padding-right: 0;" id="par_email">
+									<input type="text" id="email" class="form-control" value="" />
+								</span>
+								<span class="form-control-static col-sm-1" style="padding-left:0.3 ;padding-right:0 ;width:0 ;margin-left: 0;">
+									@
+								</span>
+								<span class="col-sm-2">
+									<select name="email" class="form-control" style="font-size: 12px;">
+										<option value="">163.com</option>
+										<option value ="">139.com</option>
+										<option value ="">qq.com</option>
+									</select>
+								</span>
+								<div class="col-sm-8" id="showText_email">
+									
+								</div>
+							</td>
+						</tr>
+						<!-- 密码 -->
+						<tr>
+							<td class="text-right" style="vertical-align: middle;">
+								<span class="_flag">*</span>
+								<span class="">密码</span>
+							</td>
+							<td class="form-group">
+								<span class="col-sm-6" style="padding-right: 0;" id="par_pass">
+									<input type="password" id="pass1" class="form-control" value="" />
+								</span>
+								<div class="col-sm-8" id="showText_pass">
+									
+								</div>
+1							</td>
+						</tr>
+						<!-- 确认密码 -->
+						<tr>
+							<td class="text-right" style="vertical-align: middle;">
+								<span class="_flag">*</span>
+								<span class="">确认密码</span>
+							</td>
+							<td class="form-group">
+								<span class="col-sm-6" style="padding-right: 0;" id="par_pass2">
+									<input type="password" id="pass2" class="form-control" value="" />
+								</span>
+								<div class="col-sm-8" id="showText_repass">
+									
+								</div>
+							</td>
+						</tr>
+						<!-- 手机号码 -->
+						<tr>
+							<td class="text-right" style="vertical-align: middle;">
+								<span class="_flag">*</span>
+								<span class="">手机号码</span>
+							</td>
+							<td class="input-group">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle form-control col-sm-offset-2 col-sm-4">
+										<span class="glyphicon glyphicon-star" style="color: rgb(255, 140, 60);"> Star</span>
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#">中国大陆</a>
+										</li>
+									</ul>
+								</span>
+								<span class="col-sm-6" id="par_tel">
+									<input type="text" id="tel" class="form-control" style="width: 260px;" value="" />
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<div class="col-sm-8" id="showText_tel">
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" class="col-sm-offset-4">
+								<div style="margin-left: 450px;">
+									<span style="margin-left: 15px; margin-right: 15px;">
+										<button type="button" class="btn btn-success" id="login_btn">提交</button>
+									</span>
+									<span style="margin-left: 15px; margin-right: 15px;">
+										<button type="reset" class="btn btn-success" onclick="reset_html()")">取消</button>
+									</span>
+								</div>
+							</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

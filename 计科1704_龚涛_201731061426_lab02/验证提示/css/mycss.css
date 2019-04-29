@@ -1,0 +1,12 @@
+._flag{
+	color: red;
+}
+
+.main{
+	margin: 100px auto;
+}
+
+.table>tbody>tr>td{
+	border-top: 0px;
+}
+
