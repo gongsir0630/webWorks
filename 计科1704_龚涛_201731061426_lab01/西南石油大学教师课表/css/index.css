@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	margin: 100px auto;
+	border-collapse: collapse;
+	width: 1000px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 14px;
+}
+
+tr,
+td,
+th {
+	border: 1px solid black;
+}
+
+caption {
+	font-family: "楷体";
+	font-size: 20px;
+}
+
+tr {
+	font-family: "黑体";
+}
+
+td {
+	font-family: "楷体";
+}

@@ -1,0 +1,64 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.main{
+	width: 800px;
+	height: 800px;
+	margin: 100px auto;
+	border: 1px solid red;
+	padding: 10px;
+}
+
+#head{
+	border-bottom: 1px solid darkgrey;
+	padding-bottom: 0.625rem;
+	padding-left: 1.25rem;
+	margin: 1.25rem 3.125rem 0;
+}
+
+#text_1{
+	font-weight: 500;
+	padding-right: 2.5rem; 
+}
+
+._flag{
+	color: red;
+	margin-right: 0.3125rem;
+}
+
+.text_2{
+	color: lightgray;
+}
+
+#content{
+	margin: 10px 100px;
+	color: darkgrey;
+	font-size: 0.875rem;
+}
+
+.td_1{
+	text-align: right;
+	color: black;
+	font-weight: 500;
+	font-size: 1rem;
+}
+
+.text_buttom{
+	color: red;
+	text-align: center;
+	font-size: 0.875rem;
+}
+
+.submit_buttom{
+	text-align: center;
+}
+
+td{
+	padding: 0.3125rem;
+}
+
+.sex{
+	color: black;
+}
