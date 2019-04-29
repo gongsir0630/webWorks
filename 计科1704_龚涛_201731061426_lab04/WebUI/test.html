@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>前端UI--EasyUI演示</title>
+		<link href="jquery-easyui-1.7.0/themes/default/easyui.css" rel="stylesheet" />
+		<script src="jquery-easyui-1.7.0/jquery.min.js"></script>
+		<script src="jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+		<script src="jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+		<link href="icon.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+	</head>
+
+	<body style="padding: 0px; background: #EAEEF5;">
+		<div id="p" class="easyui-panel" title="用户管理" style="padding:1px;background:#fafafa;" data-options="fit:true">
+
+			<!-- 主页面列表 -->
+			<div id="cc" class="easyui-layout" data-options="fit:true,border:false">
+				<div data-options="region:'north',border:true" style="height:50px;margin-top:1px;">
+
+					<table style="height:40px;width:100%">
+						<tr>
+							<td width="70px" align="right">姓名：</td>
+							<td width="130px">
+								<input id="txtusername" name="txtusername" type="text" class="easyui-validatebox textbox" style="width:170px;height:22px;" />
+							</td>
+
+							<td>
+								&emsp;
+								<a id="btnQuery" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="#">查询</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div data-options="region:'center',border:false">
+
+					<table id="dg" class="easyui-datagrid" data-options="fit: true,rownumbers:true,singleSelect:true, striped: true,pagination:true,pageSize: 20,pageNumber: 1,  pageList: [20, 30, 50, 100],toolbar:'#tb'">
+						<thead>
+							<tr>
+								<th data-options="field:'userId',width:0" hidden="hidden"></th>
+								<th data-options="field:'userName',width:100" align="center">姓名</th>
+								<th data-options="field:'userType',width:100" align="center">用户类型</th>
+								<th data-options="field:'userAccount',width:100" align="center">账号</th>
+
+							</tr>
+						</thead>
+					</table>
+
+					<div id="tb">
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" title="添加" onclick="AddStu()">添加</a>
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" title="编辑" onclick="EditStu()">编辑</a>
+						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cross',plain:true" title="删除" onclick="DeleteStu()">删除</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- end主页面列表 -->
+
+			<!-- 添加修改 -->
+			<div id="dd" class="easyui-dialog" title="添加用户">
+				<form id="ff">
+					<table width="100%" cellspacing="10" border="0">
+
+						<tr>
+							<td align="right" style="width:70px">姓名：</td>
+							<td>
+								<input class="easyui-validatebox textbox" style="width:150px;height:22px;" name="txtuserName" id="txtuserName" maxlength="25" required="required" />
+							</td>
+						</tr>
+						<tr>
+							<td align="right" style="width:70px">姓名：</td>
+							<td>
+								<input class="easyui-validatebox textbox" style="width:150px;height:22px;" name="txtuserType" id="txtuserType" maxlength="25" required="required" />
+							</td>
+						</tr>
+						<tr>
+							<td align="right" style="width:70px">账号：</td>
+							<td>
+								<input class="easyui-validatebox textbox" style="width:150px;height:22px;" name="txtuserAccount" id="txtuserAccount" maxlength="25" required="required" />
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="4" align="center" height="40">
+
+								<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="save()">保存</a>&emsp;
+								<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="cancel()">取消</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<!-- 添加修改结束 -->
+
+		</div>
+
+		<script>
+			$(function() {
+				//加载显示列表数据
+				$('#dg').datagrid({
+					url: "",
+					method: "get"
+				});
+
+				//设置弹出窗体不显示
+				$('#dd').dialog({
+					title: '添加用户',
+					width: 300,
+					height: 230,
+					closed: true,
+					modal: true,
+				});
+			})
+
+			//添加
+			function AddStu() {
+				$('#ff').form('clear');
+				$('#dd').dialog({
+					title: "添加用户",
+					modal: true
+				});
+				$("#dd").dialog("open");
+				$('#dd').window('center');
+			}
+
+			//修改
+			function EditStu() {
+				$('#dd').dialog({
+					title: "修改用户",
+					modal: true
+				});
+				var row = $('#dg').datagrid("getSelected");
+				if(!row) {
+					return;
+				}
+
+				$('#ff').form('clear');
+				$('#txtuserName').val(row.userName);
+				$('#txtuserType').val(row.userType);
+				$('#txtuserAccount').val(row.userAccount);
+				$("#dd").dialog("open");
+				$('#dd').window('center');
+			}
+
+			//删除
+			function DeleteStu() {
+				var row = $('#dg').datagrid("getSelected");
+				if(!row) {
+					return;
+				}
+				$.messager.confirm('提示', '您确认想要删除用户：' + row.userName + "？", function(r) {
+					if(r) {
+						$.post("xxxxxxxxxxxx", {
+							StuNo: row.userId
+						}, function(rsp) {
+							if(rsp == "success") {
+								$('#dg').datagrid("reload");
+							} else if(rsp == "fail") {
+								$.messager.alert('提示', '删除失败，请重试!', 'warning');
+							}
+						});
+					}
+				});
+			}
+			//保存
+			function save() {
+				if(!$("#ff").form('validate')) //表单验证不通过
+					return;
+				$.messager.progress(); // 显示进度条
+
+				var users = {
+					userName: $("#txtuserName").val(),
+					userType: $("#txtuserType").val(),
+					userAccount: $("#txtuserAccount").val()
+				};
+
+				$.post("xxxxxxxx", {
+					data: JSON.stringify(users)
+				}, function(rsp) {
+					if(rsp == "success") {
+						$("#dd").dialog("close");
+						$('#dg').datagrid("load");
+						$.messager.progress('close'); //隐藏进度条
+					} else {
+						$.messager.alert('提示', '保存失败，请重试!', 'warning');
+						$.messager.progress('close'); // 隐藏进度条
+					}
+				});
+			}
+
+			//取消
+			function cancel() {
+				$("#dd").dialog("close");
+			}
+		</script>
+	</body>
+
+</html>

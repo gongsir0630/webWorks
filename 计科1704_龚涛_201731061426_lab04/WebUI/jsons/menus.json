@@ -1,0 +1,10 @@
+[
+	{"id":"1","text":"学生管理","parentId":"0","iconCls":"icon-building",
+	"children": 
+		[
+		{"id":"2","text":"学生基本信息管理","url":"student.html","parentId":"1","iconCls":"icon-building"},
+		{"id":"3","text":"xxxx管理","url":"test.html","parentId":"1","iconCls":"icon-building"}
+		]
+	}
+
+]
